@@ -1,0 +1,9 @@
+{
+  "id": "galaxy-graph",
+  "name": "obsidian记忆星云",
+  "version": "1.2.0",
+  "minAppVersion": "1.0.0",
+  "description": "3D螺旋星系记忆星图：细密颗粒旋臂、金色星核、彩色十字光芒星点与从核心射出的记忆光线",
+  "author": "夕夕雅",
+  "isDesktopOnly": true
+}
