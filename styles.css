@@ -1,0 +1,272 @@
+/*
+ * 记忆星图 Galaxy Graph
+ * Copyright (c) 2026 夕夕雅
+ * SPDX-License-Identifier: MIT
+ */
+
+.galaxy-graph-view {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+  background: radial-gradient(circle at 50% 60%, #0d2838 0%, #061524 45%, #02070f 80%, #010408 100%);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  user-select: none;
+}
+
+.galaxy-canvas-container {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.galaxy-vignette {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 20;
+  background: radial-gradient(ellipse at 50% 55%, rgba(0, 0, 0, 0) 42%, rgba(0, 4, 10, 0.35) 72%, rgba(0, 2, 6, 0.72) 100%);
+}
+
+.galaxy-header-bar {
+  position: absolute;
+  top: 14px;
+  left: 18px;
+  right: 18px;
+  z-index: 30;
+  pointer-events: none;
+}
+
+.galaxy-app-title {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #ffde70;
+  letter-spacing: 0.5px;
+  text-shadow: 0 0 10px rgba(255, 222, 112, 0.6);
+  margin-bottom: 8px;
+  pointer-events: auto;
+}
+
+.galaxy-search-wrap {
+  position: relative;
+  width: 100%;
+  max-width: 480px;
+  pointer-events: auto;
+}
+
+.galaxy-search-input {
+  width: 100%;
+  height: 34px;
+  background: rgba(10, 24, 38, 0.55);
+  border: 1px solid rgba(80, 180, 240, 0.25);
+  border-radius: 17px;
+  padding: 0 16px;
+  color: #e2f1ff;
+  font-size: 12px;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  outline: none;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.5);
+  transition: all 0.25s ease;
+}
+
+.galaxy-search-input:focus {
+  background: rgba(14, 35, 58, 0.75);
+  border-color: rgba(94, 212, 255, 0.7);
+  box-shadow: 0 0 12px rgba(56, 189, 248, 0.35);
+}
+
+.galaxy-search-input::placeholder {
+  color: #5d7890;
+}
+
+.galaxy-close-btn {
+  position: absolute;
+  top: 14px;
+  right: 18px;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: rgba(20, 36, 54, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: #9cb3c9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  cursor: pointer;
+  backdrop-filter: blur(8px);
+  z-index: 31;
+  transition: all 0.2s;
+}
+.galaxy-close-btn:hover {
+  background: rgba(40, 70, 105, 0.8);
+  color: #ffffff;
+}
+
+.galaxy-info-card {
+  position: absolute;
+  right: 20px;
+  bottom: 24px;
+  width: 285px;
+  background: linear-gradient(145deg, rgba(13, 38, 62, 0.82) 0%, rgba(7, 22, 38, 0.92) 100%);
+  border: 1px solid rgba(80, 180, 240, 0.35);
+  box-shadow: 0 12px 36px rgba(0, 5, 15, 0.7), 0 0 18px rgba(40, 140, 230, 0.18);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border-radius: 16px;
+  padding: 14px 16px;
+  color: #e0f2fe;
+  z-index: 30;
+  transition: opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1), transform 0.3s ease;
+}
+
+.galaxy-info-card.hidden {
+  opacity: 0;
+  transform: translateY(14px) scale(0.96);
+  pointer-events: none;
+}
+
+.galaxy-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 6px;
+}
+
+.galaxy-card-title-wrap {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  max-width: 220px;
+}
+
+.galaxy-card-icon {
+  color: #ffde70;
+  font-size: 12px;
+  text-shadow: 0 0 8px rgba(255, 222, 112, 0.8);
+}
+
+.galaxy-card-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: #ffffff;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.galaxy-card-close {
+  cursor: pointer;
+  color: #64829f;
+  font-size: 12px;
+}
+.galaxy-card-close:hover {
+  color: #ffffff;
+}
+
+.galaxy-card-meta {
+  font-size: 11px;
+  color: #60a5fa;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.galaxy-card-snippet {
+  font-size: 11.5px;
+  line-height: 1.55;
+  color: #a5c2dc;
+  margin-bottom: 12px;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.galaxy-card-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.galaxy-card-subdate {
+  font-size: 10.5px;
+  color: #4b6782;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 160px;
+}
+
+.galaxy-card-btn {
+  background: rgba(14, 116, 144, 0.75);
+  border: 1px solid rgba(56, 189, 248, 0.4);
+  color: #e0f2fe;
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-size: 11px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.galaxy-card-btn:hover {
+  background: rgba(14, 165, 233, 0.9);
+  box-shadow: 0 0 10px rgba(56, 189, 248, 0.6);
+  color: #ffffff;
+}
+
+.galaxy-music-btn {
+  position: absolute;
+  left: 22px;
+  bottom: 24px;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: rgba(20, 36, 54, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  color: #9cb3c9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  cursor: pointer;
+  backdrop-filter: blur(8px);
+  z-index: 31;
+  transition: all 0.25s ease;
+}
+.galaxy-music-btn:hover {
+  background: rgba(40, 70, 105, 0.8);
+  color: #ffffff;
+}
+.galaxy-music-btn.playing {
+  color: #ffde70;
+  border-color: rgba(255, 222, 112, 0.6);
+  box-shadow: 0 0 12px rgba(255, 222, 112, 0.35);
+}
+
+.galaxy-watermark {
+  position: absolute;
+  right: 14px;
+  bottom: 10px;
+  font-size: 10px;
+  color: rgba(180, 210, 240, 0.35);
+  letter-spacing: 0.5px;
+  z-index: 29;
+  pointer-events: none;
+  text-shadow: 0 0 6px rgba(0, 0, 0, 0.8);
+}
+
+.galaxy-music-btn[aria-disabled="true"] {
+  opacity: 0.45;
+  cursor: default;
+}
+.galaxy-music-btn[aria-disabled="true"]:hover {
+  background: rgba(20, 36, 54, 0.6);
+  color: #9cb3c9;
+}

@@ -1,0 +1,34 @@
+本仓库公开的名称是 obsidian记忆星云。GitHub 仓库地址保持
+https://github.com/lovexixiya-ship-it/obsidian-plugin
+插件 ID 保持 galaxy-graph。
+
+插件代码
+  main.js、styles.css、manifest.json
+  Copyright (c) 2026 夕夕雅
+  许可证：MIT（见 LICENSE）
+  MIT 允许使用、复制、修改和再分发，包括商业使用。
+  画面水印原文「创作者 夕夕雅 | 商用微信 cx355120343」是联系信息，
+  不是 MIT 的附加限制，也不构成付款条件。
+
+第三方
+  three.min.js
+  Three.js r128（库内 REVISION 为 "128"）
+  Copyright 2010-2021 Three.js Authors
+  SPDX-License-Identifier: MIT
+  全文见 LICENSE-THREE。
+  2026-11-07 与下列官方文件逐字节比对，结果一致：
+    - https://github.com/mrdoob/three.js/blob/r128/build/three.min.js
+      （raw: https://raw.githubusercontent.com/mrdoob/three.js/r128/build/three.min.js）
+    - npm 包 three@0.128.0 内的 build/three.min.js
+      （https://registry.npmjs.org/three/-/three-0.128.0.tgz）
+  SHA-256：9274bbcec8d96168626c732b5d31c775aa8cfb7eaa0599bec0c175908a2c1ce2
+  LICENSE-THREE 与上述 tag、npm 包中的 LICENSE 逐字节一致。
+  SHA-256：7dddf7c5b8fd10ee654db8857d75d104b5557889aa5a91fc4ca545ea7c07062f
+  因此本仓库中的 three.min.js 就是官方 r128 构建，没有被改写。
+
+未包含、也不被重新许可
+  Obsidian 应用程序及其 API 只在运行时由用户自己的 Obsidian 提供。
+  本包不包含音乐。公开包不读取、不播放 bgm.mp3。
+
+发布形式
+  根目录中的 JavaScript 可直接手动安装。验证脚本只做检查，不会编译出另一份插件。
